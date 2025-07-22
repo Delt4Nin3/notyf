@@ -30,6 +30,7 @@ export interface INotyfNotificationOptions {
    */
   backgroundColor: string;
   background: string;
+  textColor: string;
   message: string;
   ripple: boolean;
   position: INotyfPosition;

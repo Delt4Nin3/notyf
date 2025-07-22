@@ -139,6 +139,7 @@ export class NotyfView {
 
     message.innerHTML = options.message || '';
     const mainColor = options.background || options.backgroundColor;
+    const textColor = options.textColor;
 
     // Build the icon and append it to the card
     if ( iconOpts ) {
@@ -167,12 +168,22 @@ export class NotyfView {
     notificationElem.appendChild(wrapper);
 
     // Add ripple if applicable, else just paint the full toast
-    if (mainColor) {
+    if (mainColor || textColor) {
       if (options.ripple) {
-        ripple.style.background = mainColor;
+        if (mainColor) {
+          ripple.style.background = mainColor;
+        }
+        if (textColor) {
+          ripple.style.color = textColor;
+        }
         notificationElem.appendChild(ripple);
       } else {
-        notificationElem.style.background = mainColor;
+        if (mainColor) {
+          notificationElem.style.background = mainColor;
+        }
+        if (textColor) {
+          notificationElem.style.color = textColor;
+        }
       }
     }
 
